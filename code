@@ -1,0 +1,70 @@
+#include<iostream>
+//#include<conio.h>
+using namespace std;
+class student
+{
+    int rollno;
+    char stu_name[20];
+    char sub_name[3][20];
+    float max_marks[3], min_marks[3], obj_marks[3];
+
+    public:
+    void input_data();
+    void result();
+
+};
+void student::input_data()
+{
+    cout<<"Enter details of the student:"<<endl;
+    cout<<"Roll no:";
+    cin>>rollno;
+    cout<<"Name:";
+    cin>>stu_name;
+    cout<<"Enter subject details"<<endl;
+    int i;
+    for(i=0;i<3;i++)
+    {
+        cout<<"Subject no."<<i+1<<endl<<endl;
+        cout<<"Name of subject: ";
+        cin>>sub_name[i];
+        cout<<"Maximum marks:";
+        cin>>max_marks[i];
+        cout<<"Minimum marks:";
+        cin>>min_marks[i];
+        cout<<"Obtained marks:";
+        cin>>obj_marks[i];
+    }
+}
+void student::result(){
+    cout<<"BELOW IS THE DETAILS OF THE STUDENT:"<<endl;
+    cout<<"Result of the student "<<stu_name<<"is"<<endl;
+    float total_max,total_obt;
+    float per;
+    int i;
+    for(i=0;i<3;i++){
+        total_max=total_max+max_marks[i];
+        total_obt=total_obt+obj_marks[i];
+
+    }
+    per= total_obt*100/total_max;
+    cout<<"Total obtained marks out of"<<total_max<<"="<<total_obt<<endl;
+    cout<<"Total percentage="<<per<<"%"<<endl;
+
+    if(per>=70)
+    cout<<"First division"<<endl;
+    else if(per<70 && per>=50)
+    cout<<"2nd division"<<endl;
+    else if(per>33 && per<50)
+    cout<<"Third division"<<endl;
+    else
+    cout<<"Fail"<<endl;
+}
+
+int main()
+{
+    student stu1;
+    stu1.input_data();
+    stu1.result();
+   // getch();
+    return 0;
+}
